@@ -1,3 +1,21 @@
+/* FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+}
+.lato {
+  font-family: 'Lato', sans-serif;
+}
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +28,51 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.login {
+  background-image: url("./../src/assets/images/login_bg.jpg");
+  background-size: cover; /* Ajuste la taille pour couvrir tout l'élément */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-position: center center; /* Positionne l'image au centre */
+}
+
+.rotate-180{
+  transform: rotate(180deg);
+}
+.ellipse {
+  background-image: url("./../src/assets/images/Ellipse\ 24.png");
+  background-size: cover; /* Ajuste la taille pour couvrir tout l'élément */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-position: center center; /* Positionne l'image au centre */
+}
+
+.ministere {
+  background-image: url("./../src/assets/images/ministere_logo.jpg");
+  background-size: cover; /* Ajuste la taille pour couvrir tout l'élément */
+  background-repeat: no-repeat; /* Empêche la répétition de l'image */
+  background-position: center center; /* Positionne l'image au centre */
+
+}
+.step-item {
+  @apply relative flex flex-col justify-center items-center w-96;
+}
+.step-item:not(:first-child):before {
+  @apply content-[''] bg-slate-200 absolute w-full h-[3px] right-2/4 top-1/3 -translate-y-2/4;
+}
+.step {
+  @apply w-6 h-6 flex items-center justify-center z-10 relative bg-slate-700 rounded-full font-semibold text-white;
+}
+.active .step {
+  @apply bg-greenApple;
+}
+.complete .step {
+  @apply bg-greenApple;
+}
+.complete p {
+  @apply text-white;
+}
+.complete:not(:first-child):before,
+.active:not(:first-child):before {
+  @apply bg-greenApple;
 }
