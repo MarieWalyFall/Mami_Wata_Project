@@ -28,7 +28,6 @@ const AddTicketPage = () => {
         <div className="w-1/2 px-32">
           <Userform onFormFilled={handleFormFilled} />
         </div>
-        {/* <div className="border-dashed border-r border-gray-300 h-80 mx-4"></div> */}
         <div className="border-dashed border-l border-gray-300 w-1/2 h-full px-32 py-10 flex flex-col justify-center">
           <AddTicket />
           <PriceComponent/>

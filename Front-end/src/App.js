@@ -7,6 +7,8 @@ import AddMedicationPage from './pages/AddMedicationPage';
 import AddTicketPage from './pages/AddTicketPage';
 import LoginPage from './pages/LoginPage';
 import Conditioning from './pages/Conditioning';
+import ListMedicationPage from './pages/ListMedicationPage';
+
 
 function App() {
   return (
@@ -15,10 +17,6 @@ function App() {
     // <AddTicketPage/>
     // <AddMedicationPage></AddMedicationPage>
     // <LoginPage/>
-
-
-    
-    
   )
 }
 
