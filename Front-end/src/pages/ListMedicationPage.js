@@ -6,6 +6,7 @@ import pharmacieBottle from './../assets/images/EpiVial__04040 1.png';
 import deleteSymbol from './../assets/images/delete-svgrepo-com.png';
 import editSymbol from './../assets/images/edit-4-svgrepo-com.png';
 import plusSymbol from './../assets/images/plus-svgrepo-com.png';
+import eyeSymbol from './../assets/images/eye-alt-svgrepo-com.png';
 
 
 const ListMedicationPage = () => {
@@ -69,6 +70,7 @@ const ListMedicationPage = () => {
                                     <span className="bg-greenApple p-1 border rounded-md text-white">Activé</span>
                                 </td>    
                                 <td className="py-4 px-7">
+                                <button> <img className='w-6 h-6' src={eyeSymbol} alt="" /></button>
                                 <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
                                 <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
                                 </td>    
@@ -87,10 +89,11 @@ const ListMedicationPage = () => {
                             <td className="py-4 px-7">
                                 <span className="bg-red-500 p-1 border rounded-md text-white">Désactivé</span>
                             </td>    
-                            <td className="py-4 px-7">
-                            <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
-                            <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
-                            </td>    
+                                <td className="py-4 px-7">
+                                <button> <img className='w-6 h-6' src={eyeSymbol} alt="" /></button>
+                                <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
+                                <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
+                                </td>    
                         </tr>
                         <tr className='border-b'>
                             <td className='py-4 pl-6'>
@@ -106,10 +109,11 @@ const ListMedicationPage = () => {
                             <td className="py-4 px-7">
                                 <span className="bg-greenApple p-1 border rounded-md text-white">Activé</span>
                             </td>    
-                            <td className="py-4 px-7">
-                            <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
-                            <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
-                            </td>    
+                                <td className="py-4 px-7">
+                                <button> <img className='w-6 h-6' src={eyeSymbol} alt="" /></button>
+                                <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
+                                <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
+                                </td>    
                         </tr>
                         <tr className='border-b'>
                             <td className='py-4 pl-6'>
@@ -125,10 +129,11 @@ const ListMedicationPage = () => {
                             <td className="py-4 px-7">
                                 <span className="bg-red-500 p-1 border rounded-md text-white">Désactivé</span>
                             </td>    
-                            <td className="py-4 px-7">
-                            <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
-                            <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
-                            </td>    
+                                <td className="py-4 px-7">
+                                <button> <img className='w-6 h-6' src={eyeSymbol} alt="" /></button>
+                                <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
+                                <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
+                                </td>    
                         </tr>
                         <tr className='border-b'>
                             <td className='py-4 pl-6'>
@@ -144,10 +149,11 @@ const ListMedicationPage = () => {
                             <td className="py-4 px-7">
                                 <span className="bg-greenApple p-1 border rounded-md text-white">Activé</span>
                             </td>    
-                            <td className="py-4 px-7">
-                            <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
-                            <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
-                            </td>    
+                                <td className="py-4 px-7">
+                                <button> <img className='w-6 h-6' src={eyeSymbol} alt="" /></button>
+                                <button> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
+                                <button> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>
+                                </td>    
                         </tr>
                     </tbody>
                 </table>    

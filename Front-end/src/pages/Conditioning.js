@@ -46,7 +46,7 @@ const Conditioning = () => {
                     <td className="border px-4 py-2">Sirop</td>
                     <td className="border px-4 py-2 flex items-center justify-center">
                     <button
-                        className="bg-red-700 p-1 border rounded-md text-white"
+                        className="bg-red-500 p-1 border rounded-md text-white"
                         onClick={handleDeactivate}
                     >
                         Désactivé

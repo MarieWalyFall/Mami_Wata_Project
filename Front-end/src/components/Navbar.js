@@ -66,16 +66,7 @@ const Navbar = ({ticket}) => {
               <li>
                 <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Tableau de bord</a>
               </li>
-              <li>
-                <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Utilisateurs</a>
-              </li>
-              <li>
-                <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Médicaments</a>
-              </li>
-              <li>
-                <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Mutuelles</a>
-              </li>
-        </ul>        
+          </ul>        
         </div>
       </div>
       <div className='flex flex-col items-center text-center justify-center mt-6'>
