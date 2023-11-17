@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-const Navbar = ({ticket}) => {
+const Navbar = ({ticket, page}) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -12,7 +13,7 @@ const Navbar = ({ticket}) => {
       <div className="w-1/4 max-w-screen-xl flex flex-wrap items-center justify-between mr-auto p-4">
         <button
           type="button"
-          className="inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          className="absolute inline-flex items-center justify-center p-2 w-10 h-10 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           aria-controls="navbar-hamburger"
           aria-expanded={menuOpen}
           onClick={toggleMenu}
@@ -53,18 +54,26 @@ const Navbar = ({ticket}) => {
           )}
         </button>
         <div className={`w-full ${menuOpen ? '' : 'hidden'}`} id="navbar-hamburger">
-        <ul className="flex flex-col font-medium rounded-lg  dark:bg-gray-800 dark:border-gray-700">
-              <li>
-                <a href="#" className="block py-2 pl-3 pr-4 border text-greenApple" aria-current="page">Vente de tickets</a>
+        <ul className="flex absolute mt-6 flex-col font-medium rounded-lg  dark:bg-gray-800 dark:border-gray-700">
+              <li className='bg-white hover:bg-gray-100'>
+                <Link to="/ticketSale" className={`block py-2 pl-3 pr-4 border text-${page == "ticketSale"? 'greenApple' : 'gray-600'}`} aria-current="page">
+                  Vente de tickets
+                </Link>
               </li>
-              <li>
-                <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Vente de médicaments</a>
+              <li className='bg-white hover:bg-gray-100'>
+                <Link to="/medicationSale" className={`block py-2 pl-3 pr-4 border text-${page == "medicationSale"? 'greenApple' : 'gray-600'}`} aria-current="page">
+                  Vente de medicaments
+                </Link>
               </li>
-              <li>
-                <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">Historique</a>
+              <li className='bg-white hover:bg-gray-100'>
+                <Link to="/history/pharmacie/true" className={`block py-2 pl-3 pr-4 border text-${page == "history"? 'greenApple' : 'gray-600'}`} aria-current="page">
+                  Historique
+                </Link>
               </li>
-              <li>
-                <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Tableau de bord</a>
+              <li className='bg-white hover:bg-gray-100'>
+                <Link to="/dashboard" className={`block py-2 pl-3 pr-4 border text-${page == "dashboard"? 'greenApple' : 'gray-600'}`} aria-current="page">
+                  Tableau de bord
+                </Link>
               </li>
           </ul>        
         </div>

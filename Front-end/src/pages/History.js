@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import PharmacieHistory from '../components/PharmacieHistory';
 import ConsultationHistory from '../components/ConsultationHistory';
 import Navbar from '../components/Navbar';
 import SearchBar from '../components/SearchBar';
 
-function History({ whichPage, allOpen }) {
+function History() {
+  const { whichPage, allOpen } = useParams();
   const [activeTab, setActiveTab] = useState(whichPage);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ function History({ whichPage, allOpen }) {
 
   return (
     <div className="mb-4">
-      <Navbar/>
+      <Navbar page="history" />
       <ul className="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab" data-tabs-toggle="#myTabContent" role="tablist">
         <li className=" mx-4" role="presentation">
           <button

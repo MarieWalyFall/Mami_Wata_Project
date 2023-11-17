@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+
 import pharmacieSign from './../assets/images/pharmacy-sign.png';
 
-const Navbar = ({ ticket }) => {
+const Navbar = ({ page }) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -14,27 +16,41 @@ const Navbar = ({ ticket }) => {
       <img src={pharmacieSign} alt="" className="mr-2" />
     </div>
     <nav>
-      <ul >
+      <ul>
           <li>
-            <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Tableau de bord</a>
+            <Link to="/dashboard" className={`block py-2 pl-3 pr-4 border text-${page == "dashboard"? 'greenApple' : 'gray-600'} hover:bg-gray-100 `} aria-current="page">
+              Tableau de bord
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white">Historique</a>
+            <Link to="/history/pharmacie/true" className={`block py-2 pl-3 pr-4 border text-${page == "history/pharmacie/true"? 'greenApple' : 'gray-600'} hover:bg-gray-100 `} aria-current="page">
+              Historique
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Conditionnements</a>
+            <Link to="/conditioning" className={`block py-2 pl-3 pr-4 border text-${page == "conditioning"? 'greenApple' : 'gray-600'} hover:bg-gray-100 `} aria-current="page">
+              Conditionnements
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Médicaments</a>
+            <Link to="/listMedication" className={`block py-2 pl-3 pr-4 border text-${page == "listMedication"? 'greenApple' : 'gray-600'} hover:bg-gray-100 `} aria-current="page">
+              Médicaments
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Inventaire</a>
+            <Link to="/inventory" className={`block py-2 pl-3 pr-4 border text-${page == "inventory"? 'greenApple' : 'gray-600'} hover:bg-gray-100 `} aria-current="page">
+              Inventaire
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Mutuelles</a>
+            <Link to="/mutual" className={`block py-2 pl-3 pr-4 border text-${page == "mutual"? 'greenApple' : 'gray-600'} hover:bg-gray-100 `} aria-current="page">
+              Mutuelles
+            </Link>
           </li>
           <li>
-            <a href="#" className="block py-2 pl-3 pr-4 border text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">Services</a>
+            <Link to="/service" className={`block py-2 pl-3 pr-4 border text-${page == "service"? 'greenApple' : 'gray-600'} hover:bg-gray-100 `} aria-current="page">
+              Services
+            </Link>
           </li>
         </ul>        
       </nav>

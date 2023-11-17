@@ -20,7 +20,7 @@ const AddMedicationPage = () => {
   return (
     <>
       <div className="h-1/5">
-        <Navbar ticket={false}/>
+        <Navbar ticket={false} page="medicationSale"/>
       </div>
       <div className="flex justify-center mt-8">
         <Stepper currentStep={currentStep} complete={complete} ticket={false}  />

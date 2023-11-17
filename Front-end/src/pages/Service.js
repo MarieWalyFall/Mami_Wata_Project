@@ -1,20 +1,59 @@
-import React from 'react';
+import React, { useState } from 'react';
 import NavbarVertical from "../components/NavbarVertical";
+import AddComponent from '../components/CRUD/AddComponent';
 
 import editSymbol from './../assets/images/edit-4-svgrepo-com.png';
 import deleteSymbol from './../assets/images/delete-svgrepo-com.png';
 import plusSymbol from './../assets/images/plus-svgrepo-com.png';
 
+
+const serviceFields = [
+    { name: 'name', type: 'String', placeholder: 'Nom' },
+    { name: 'description', type: 'String', placeholder: 'Description' },
+];
+const categoryFields = [
+    { name: 'name', type: 'String', placeholder: 'Nom' },
+];
+
 const Service = () => {
+
+    const [isFormOpenService, setFormOpenService] = useState(false);
+    const [isFormOpenCategory, setFormOpenCategory] = useState(false);
+
+    const handleAddClickService = () => {
+        setFormOpenService(true);
+    };
+
+    const handleAddClickCategory = () => {
+        setFormOpenCategory(true);
+    };
+
+    const handleFormCancel = () => {
+        setFormOpenService(false);
+        setFormOpenCategory(false);
+    };
+
+    const handleFormConfirmService = (formData) => {
+        // Mettez ici la logique pour traiter les données du formulaire
+        // Vous pouvez également fermer le formulaire après le traitement
+        setFormOpenService(false);
+    };
+    const handleFormConfirmCategory = (formData) => {
+        // Mettez ici la logique pour traiter les données du formulaire
+        // Vous pouvez également fermer le formulaire après le traitement
+        setFormOpenCategory(false);
+    };
+
+
     return (  
         <div className="flex">
-            <NavbarVertical/>
+            <NavbarVertical page="service" />
             <div className="p-4">
                 <h1 className="text-3xl mt-10 inter ml-10 mb-4">Services</h1>
                 <div>
                     <h1 className='text-xl mt-12 inter ml-10 mb-4 text-greenApple font-semibold'>Liste des services</h1>
                     <div className='flex justify-end pb-6'>
-                        <button className='flex justify-center items-center bg-greenApple border rounded-2xl text-white text-lg p-2'>
+                        <button className='flex justify-center items-center bg-greenApple border rounded-2xl text-white text-lg p-2' onClick={handleAddClickService}>
                             <span className='pr-2 font-semibold'>Ajouter</span>  
                             <img className='w-5 h-5' src={plusSymbol} alt="" /> 
                         </button>
@@ -74,7 +113,7 @@ const Service = () => {
                 <div>
                     <h1 className='text-xl mt-12 inter ml-10 mb-4 text-greenApple font-semibold'>Liste des catégories</h1>
                     <div className='flex justify-end pb-6'>
-                        <button className='flex justify-center items-center bg-greenApple border rounded-2xl text-white text-lg p-2'>
+                        <button className='flex justify-center items-center bg-greenApple border rounded-2xl text-white text-lg p-2' onClick={handleAddClickCategory}>
                             <span className='pr-2 font-semibold'>Ajouter</span>  
                             <img className='w-5 h-5' src={plusSymbol} alt="" /> 
                         </button>
@@ -127,6 +166,13 @@ const Service = () => {
                     </table>    
                 </div>
             </div>
+            {isFormOpenService && (
+                    <AddComponent fields={serviceFields} onCancel={handleFormCancel} onConfirm={handleFormConfirmService} />
+            )}
+            {isFormOpenCategory && (
+                    <AddComponent fields={categoryFields} onCancel={handleFormCancel} onConfirm={handleFormConfirmCategory} />
+            )}
+
         </div>
 
     );

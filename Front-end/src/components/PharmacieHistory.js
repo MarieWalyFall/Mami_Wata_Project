@@ -1,6 +1,6 @@
 const PharmacieHistory = () => {
   return (  
-    <div className="relative py-10 px-4 rounded-lg">
+    <div className="py-10 px-4 rounded-lg">
 
       <span className="lato text-sm py-10 font-semibold">Aujourd'hui - Samedi 8 avril 2023</span>
       <table className="inter w-full text-sm text-left border mb-6 shadow-lg">

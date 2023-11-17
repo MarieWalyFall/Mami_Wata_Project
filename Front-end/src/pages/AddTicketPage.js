@@ -19,7 +19,7 @@ const AddTicketPage = () => {
   return (
     <>
       <div className="h-1/5">
-        <Navbar ticket={true}/>
+        <Navbar ticket={true} page="ticketSale" />
       </div>
       <div className="flex justify-center mt-8">
         <Stepper currentStep={currentStep} complete={complete} ticket={true}  />
