@@ -27,6 +27,7 @@ const EditComponent = ({ fields, data, onCancel, onConfirm }) => {
       <form>
         {fields
         .filter(field => field.name !== 'id')
+        .filter(field => field.name !== 'authority_name')
         .map((field) => (
           <div key={field.name} className={` ${field.name =='activated' ? 'hidden' : ''} mb-4`}>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor={field.name}>

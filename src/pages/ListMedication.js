@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import NavbarVertical from "../components/Navbar/NavbarVertical";
+
 import AddComponent from '../components/CRUD/AddComponent';
 import DetailComponent from '../components/CRUD/DetailComponent';
 import EditComponent from '../components/CRUD/EditComponent';
 import ActivatedComponent from '../components/CRUD/ActivatedComponent';
 
-import { MedicationData } from '../components/Data/Data';
+import { MedicationData, UserData } from '../components/Data/Data';
 import { MedicationFields } from '../components/Data/Fields';
 
 import deleteSymbol from './../assets/images/crud/delete-svgrepo-com.png';
@@ -41,6 +44,18 @@ const ListMedication = () => {
 
     const [isFormOpen, setFormOpen] = useState(false);
 
+    const { userId } = useParams();
+    const user = UserData.find((user) => user.id === userId);
+  
+    if (!user) {
+      console.log(userId);
+      return <div>Utilisateur non trouvé</div>;
+    }
+    if(user.authority_name != 'admin' && user.authority_name != 'pharmacien'){
+      return <div>Utilisateur non autorisé</div>;
+    }
+
+
     const handleAddClick = () => {
         setFormOpen(true);
     };
@@ -69,7 +84,7 @@ const ListMedication = () => {
 
     return (  
         <div className='flex'>
-            <NavbarVertical page="listMedication" />
+            <NavbarVertical page="listMedication" userId={userId}/>
             <div className='p-4'>
                 <h1 className="inter text-3xl mt-10 inter ml-10 mb-4">Liste de médicaments</h1>
                 <div className='flex justify-end pb-6'>

@@ -50,7 +50,7 @@ const ConsultationHistory = () => {
             <td className="pt-4 px-2">Prise en charge</td>
             <td className="pt-4 px-2">Service</td>
             <td className="pt-4 px-2">Statut</td>
-            <td></td>
+            <td></td> 
           </tr>
         </thead>
         <tbody>

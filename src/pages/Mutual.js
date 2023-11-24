@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import NavbarVertical from "../components/Navbar/NavbarVertical";
 
 import { NatureMutualFields, MutualFields } from '../components/Data/Fields';
-import { NatureMutualData, MutualData } from '../components/Data/Data';
+import { NatureMutualData, MutualData, UserData } from '../components/Data/Data';
 
 import AddComponent from '../components/CRUD/AddComponent';
 import ActivatedComponent from '../components/CRUD/ActivatedComponent';
@@ -27,6 +29,18 @@ const Mutual = () => {
 
     const [isEditOpen, setEditOpen] = useState(false);
 
+
+    const { userId } = useParams();
+    const user = UserData.find((user) => user.id === userId);
+  
+    if (!user) {
+      console.log(userId);
+      return <div>Utilisateur non trouvé</div>;
+    }
+    if(user.authority_name != 'admin' && user.authority_name != 'pharmacien'){
+      return <div>Utilisateur non autorisé</div>;
+    }
+  
     const handleEditClick = (mutual) => {
         setSelectedMutual(mutual);
         setEditOpen(true);
@@ -82,7 +96,7 @@ const Mutual = () => {
 
     return (  
         <div className="flex">
-            <NavbarVertical page="mutual" />
+            <NavbarVertical page="mutual" userId={userId}/>
             <div className="p-4">
                 <h1 className="text-3xl mt-10 inter ml-10 mb-4">Mutuelles</h1>
                 <div>

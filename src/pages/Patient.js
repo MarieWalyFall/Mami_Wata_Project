@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import NavbarVertical from "../components/Navbar/NavbarVertical";
+
 import AddComponent from '../components/CRUD/AddComponent';
 import DetailComponent from '../components/CRUD/DetailComponent';
 import EditComponent from '../components/CRUD/EditComponent';
 import ActivatedComponent from '../components/CRUD/ActivatedComponent';
 
-import { PatientData } from '../components/Data/Data';
+import { PatientData, UserData } from '../components/Data/Data';
 import { PatientFields } from '../components/Data/Fields';
 
 import deleteSymbol from './../assets/images/crud/delete-svgrepo-com.png';
@@ -43,6 +46,18 @@ const Patient = () => {
 
     const [isFormOpen, setFormOpen] = useState(false);
 
+    const { userId } = useParams();
+    const user = UserData.find((user) => user.id === userId);
+  
+    if (!user) {
+      console.log(userId);
+      return <div>Utilisateur non trouvé</div>;
+    }
+    if(user.authority_name != 'admin'){
+      return <div>Utilisateur non autorisé</div>;
+    }
+
+
     const handleAddClick = () => {
         setFormOpen(true);
     };
@@ -68,7 +83,7 @@ const Patient = () => {
 
     return (  
         <div className="flex">  
-            <NavbarVertical page="patient" />
+            <NavbarVertical page="patient" userId={userId}/>
             <div className="p-4">
             <h1 className="inter text-3xl mt-10 inter ml-10 mb-4">Liste de patients</h1>
                 <div className='flex justify-end pb-6'>
@@ -81,28 +96,30 @@ const Patient = () => {
                     <thead>
                         <tr className='raleway border-b-2 border-gray-400'>
                             <th className="py-4 pl-6">Prénom(s)</th>
-                            <th className="py-4 px-7">Nom</th>
-                            <th className="py-4 px-7">Numéro de téléphone</th>
-                            <th className="py-4 px-7">Age</th>
-                            <th className="py-4 px-7">Mutuelle</th>
-                            <th className="py-4 px-7">Statut</th>
-                            <th className="py-4 px-7">Actions</th>
+                            <th className="py-4 px-5">Nom</th>
+                            <th className="py-4 px-5">Numéro de téléphone</th>
+                            <th className="py-4 px-5">Age</th>
+                            <th className="py-4 px-5">Sexe</th>
+                            <th className="py-4 px-5">Mutuelle</th>
+                            <th className="py-4 px-5">Statut</th>
+                            <th className="py-4 px-5">Actions</th>
                         </tr>
                     </thead>
                     <tbody className='inter'>
                         {PatientData && PatientData.map((patient) => (
                             <tr className='border-b'>
                                 <td className="py-4 pl-6">{patient.name}</td>
-                                <td className="py-4 px-7">{patient.sur_name}</td>
-                                <td className="py-4 px-7">{patient.phone_number}</td>
-                                <td className="py-4 px-7">{patient.age}</td>
-                                <td className="py-4 px-7">{patient.mutualized ? patient.mutual_id : 'NON'}</td>
-                                <td className="py-4 px-7">
+                                <td className="py-4 px-5">{patient.sur_name}</td>
+                                <td className="py-4 px-5">{patient.phone_number}</td>
+                                <td className="py-4 px-5">{patient.age}</td>
+                                <td className="py-4 px-5">{patient.sex}</td>
+                                <td className="py-4 px-5">{patient.mutualized ? patient.mutual_id : 'NON'}</td>
+                                <td className="py-4 px-5">
                                 <span className={`bg-${patient.activated ? 'greenApple' : 'red-500'} p-1 border rounded-md text-white`}>
                                     {patient.activated ? 'Activé' : 'Désactivé'}
                                 </span>
                                 </td>    
-                                <td className="py-4 px-7">
+                                <td className="py-4 px-5">
                                     <button onClick={() => handleDetailClick(patient)}> <img className='w-6 h-6' src={eyeSymbol} alt="" /></button>
                                     <button onClick={() => handleEditClick(patient)}> <img className='w-6 h-6' src={editSymbol} alt="" /></button>
                                     <button onClick={() => handleActivatedClick(patient)}> <img className='w-6 h-6' src={deleteSymbol} alt="" /></button>

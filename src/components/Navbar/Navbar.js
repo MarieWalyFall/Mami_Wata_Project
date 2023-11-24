@@ -1,14 +1,30 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+import { UserData } from "../Data/Data";
+
 import ellipse from './../../assets/images/Ellipse 24.png';
 
-const Navbar = ({ticket, page}) => {
+const Navbar = ({page, userId}) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  const user = UserData.find((user) => user.id === userId);
+  
+  if (!user) {
+      console.log(userId);
+      return <div>Utilisateur non trouvé</div>;
+  }
+
+  let ticket = false
+
+  if(user.authority_name === 'caissier') {
+    ticket = true
+  }
+
 
   return (
     <div className='flex items-center text-center'>        
@@ -57,22 +73,22 @@ const Navbar = ({ticket, page}) => {
         <div className={`w-full ${menuOpen ? '' : 'hidden'}`} id="navbar-hamburger">
         <ul className="flex absolute mt-6 flex-col font-medium rounded-lg  dark:bg-gray-800 dark:border-gray-700">
               <li className='bg-white hover:bg-gray-100'>
-                <Link to="/ticketSale" className={`block py-2 pl-3 pr-4 border text-${page == "ticketSale"? 'greenApple' : 'gray-600'}`} aria-current="page">
+                <Link to={`/ticketSale/${userId}`} className={`block py-2 pl-3 pr-4 border text-${page == "ticketSale"? 'greenApple' : 'gray-600'} ${user.authority_name == "caissier"? '' : 'hidden'}`} aria-current="page">
                   Vente de tickets
                 </Link>
               </li>
               <li className='bg-white hover:bg-gray-100'>
-                <Link to="/medicationSale" className={`block py-2 pl-3 pr-4 border text-${page == "medicationSale"? 'greenApple' : 'gray-600'}`} aria-current="page">
+                <Link to={`/medicationSale/${userId}`} className={`block py-2 pl-3 pr-4 border text-${page == "medicationSale"? 'greenApple' : 'gray-600'} ${user.authority_name == "dépositaire"? '' : 'hidden'}`} aria-current="page">
                   Vente de medicaments
                 </Link>
               </li>
               <li className='bg-white hover:bg-gray-100'>
-                <Link to="/history/pharmacie/true" className={`block py-2 pl-3 pr-4 border text-${page == "history"? 'greenApple' : 'gray-600'}`} aria-current="page">
+                <Link to={`/history/${userId}`} className={`block py-2 pl-3 pr-4 border text-${page == "history"? 'greenApple' : 'gray-600'}`} aria-current="page">
                   Historique
                 </Link>
               </li>
               <li className='bg-white hover:bg-gray-100'>
-                <Link to="/dashboard" className={`block py-2 pl-3 pr-4 border text-${page == "dashboard"? 'greenApple' : 'gray-600'}`} aria-current="page">
+                <Link to={`/dashboard/${userId}`}className={`block py-2 pl-3 pr-4 border text-${page == "dashboard"? 'greenApple' : 'gray-600'}`} aria-current="page">
                   Tableau de bord
                 </Link>
               </li>
@@ -80,7 +96,7 @@ const Navbar = ({ticket, page}) => {
         </div>
       </div>
       <div className='flex flex-col items-center text-center justify-center mt-6'>
-        {ticket ? 
+        { ticket ? 
           (
             <svg width="40" height="40" viewBox="0 0 115 115" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M62.5086 9.11055L8.77273 62.8465C4.19542 67.4238 4.19611 74.8715 8.77328 79.4486L16.4612 87.1366L18.9229 89.5983L21.7085 87.5116C23.3189 86.3052 25.6058 86.4677 27.028 87.8898C28.4491 89.311 28.6122 91.5974 27.4064 93.2071L25.3175 95.9928L27.7804 98.4557L35.4694 106.145C40.0457 110.721 47.4933 110.722 52.0707 106.144L105.807 52.4085C110.384 47.8312 110.383 40.3833 105.807 35.8071L98.1692 28.1692L95.4588 25.4588L92.6248 28.0398C91.0142 29.5064 88.5457 29.4497 87.007 27.911C85.4684 26.3724 85.4118 23.904 86.8785 22.2912L89.4572 19.4572L86.7481 16.7481L79.1111 9.1111C74.5338 4.53379 67.0861 4.53311 62.5086 9.11055ZM83.9081 19.5881C81.0171 22.7654 81.0974 27.6815 84.167 30.7511C87.2367 33.8208 92.1528 33.9011 95.329 31.0091L102.967 38.647C105.982 41.6623 105.982 46.5524 102.966 49.5683L49.2305 103.304C46.2146 106.32 41.3246 106.32 38.3093 103.305L30.6203 95.6156C32.996 92.4456 32.7513 87.9331 29.868 85.0498C26.9848 82.1667 22.4724 81.922 19.3013 84.2966L11.6133 76.6086C8.59702 73.5923 8.59702 68.7022 11.6128 65.6865L65.3487 11.9506C68.3644 8.93485 73.2547 8.93471 76.2709 11.951L83.9081 19.5881Z" fill="#31D55F"/>
@@ -93,7 +109,6 @@ const Navbar = ({ticket, page}) => {
             <svg width="40" height="40" viewBox="0 0 101 101" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M101 31.6259H69.3693V0.00469971H31.6307V31.6264H0V69.3645H31.6307V100.995H69.3688V69.3645H101L101 31.6259Z" fill="#31D55F"/>
             </svg>
-  
           )
         }
         <div className={`${page == 'ticketSale' || page == 'medicationSale' ? '' : 'hidden'} flex flex-col items-center text-center justify-center`}>
@@ -105,8 +120,12 @@ const Navbar = ({ticket, page}) => {
           <span className='text-gray-400 text-sm'>Visualisez les ventes </span>
         </div>
         <div className={`${page == 'dashboard' ? '' : 'hidden'} flex flex-col items-center text-center justify-center`}>
-          <span className={`-bold w-full text-xl raleway`}>Tableau de bord</span>
+          <span className={`font-bold w-full text-xl raleway`}>Tableau de bord</span>
           <span className='text-gray-400 text-sm'>Visualisez le tableau de bord</span>
+        </div>
+        <div className={`${page == 'account' ? '' : 'hidden'} flex flex-col items-center text-center justify-center`}>
+          <span className={`font-bold w-full text-xl raleway`}>Mon compte</span>
+          <span className='text-gray-400 text-sm'>Visualisez vos informations</span>
         </div>
       </div>
       <div className="w-1/4 flex items-center ml-auto">
@@ -136,14 +155,15 @@ const Navbar = ({ticket, page}) => {
           3
         </div>
         </button>
-        
-        <button
-          type="button"
-          className="text-sm p-3 rounded-full focus:ring-2 focus:ring-gray-300"
-          id="user-menu-button"
-        >
-          <img className='w-16' src={ellipse} alt="" />
-         </button>
+        <Link to={`/account/${user.id}`}>
+          <button
+            type="button"
+            className="text-sm p-3 rounded-full focus:ring-2 focus:ring-gray-300"
+            id="user-menu-button"
+          >
+            <img className='w-16' src={ellipse} alt="" />
+          </button>
+        </Link>
 
       </div>
     </div>

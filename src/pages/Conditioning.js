@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
+import { UserData } from "../components/Data/Data";
 import NavbarVertical from "../components/Navbar/NavbarVertical";
 import ActivatedComponent from '../components/CRUD/ActivatedComponent';
 import { conditioningData } from '../components/Data/Data';
@@ -8,6 +11,17 @@ const Conditioning = () => {
   const [isActivated, setActivated] = useState(false);
   const [selectedConditioning, setSelectedConditioning] = useState(null);
   const [conditioningDataBis, setConditioningData] = useState(conditioningData);
+
+  const { userId } = useParams();
+  const user = UserData.find((user) => user.id === userId);
+
+  if (!user) {
+    console.log(userId);
+    return <div>Utilisateur non trouvé</div>;
+  }
+  if(user.authority_name != 'admin' && user.authority_name != 'pharmacien'){
+    return <div>Utilisateur non autorisé</div>;
+  }
 
   const handleActivatedClick = (conditioning) => {
     setSelectedConditioning(conditioning);
@@ -35,7 +49,7 @@ const Conditioning = () => {
   };
   return (
     <div className="flex">
-      <NavbarVertical page="conditioning" />
+      <NavbarVertical page="conditioning" userId={userId}/>
       <div className="p-4">
         <h1 className="text-3xl mt-10 inter ml-10 mb-4">Liste de conditionnement</h1>
         <table className="table-auto w-full ml-10 mb-6">

@@ -265,6 +265,7 @@ const PatientData = [
     sur_name : 'America',
     phone_number : '77 777 77 77',
     age : 100,
+    sex : 'M',
     mutualized : true,
     mutual_id : 'SONAM_80',
     activated : true
@@ -273,6 +274,7 @@ const PatientData = [
     sur_name : 'Marvel',
     phone_number : '77 777 77 77',
     age : 45,
+    sex : 'F',
     mutualized : true,
     mutual_id : 'SONAM_80',
     activated : true
@@ -281,6 +283,7 @@ const PatientData = [
     sur_name : 'Man',
     phone_number : '77 777 77 77',
     age : 40,
+    sex : 'M',
     mutualized : true,
     mutual_id : 'SONAM_80',
     activated : true
@@ -289,6 +292,7 @@ const PatientData = [
     sur_name : 'Banner',
     phone_number : '77 777 77 77',
     age : 42,
+    sex : 'M',
     mutualized : false,
     mutual_id : 'SONAM_80',
     activated : false
@@ -297,6 +301,7 @@ const PatientData = [
     sur_name : 'Odinson',
     phone_number : '77 777 77 77',
     age : 25,
+    sex : 'M',
     mutualized : false,
     mutual_id : 'SONAM_80',
     activated : true
@@ -304,45 +309,50 @@ const PatientData = [
 ];
 
 const UserData = [
-  { login : 'admin',
-    password_hash : '',
+  { id : '1',
+    login : 'admin',
+    password_hash : 'passer',
     first_name : 'Captain',
     last_name : 'Holt',
     email : 'holt@gmail.com',
     authority_name : 'admin',
     activated : true
   },
-  { login : 'pharmacien',
-    password_hash : '',
+  { id : '2',
+    login : 'pharmacien',
+    password_hash : 'passer',
     first_name : 'Terry',
     last_name : 'Jeffords',
     email : 'jeffords@gmail.com',
     authority_name : 'pharmacien',
     activated : true
   },
-  { login : 'dépositaire',
-    password_hash : '',
+  { id : '3',
+  login : 'agent',
+  password_hash : 'passer',
+  first_name : 'Rosa',
+  last_name : 'Diaz',
+  email : 'diaz@gmail.com',
+  authority_name : 'agent',
+  activated : true
+  },
+  { id : '4',
+    login : 'caissier',
+    password_hash : 'passer',
+    first_name : 'Gina',
+    last_name : 'Linetti',
+    email : 'linetti@gmail.com',
+    authority_name : 'caissier',
+    activated : false
+  },
+  { id : '5',
+    login : 'dépositaire',
+    password_hash : 'passer',
     first_name : 'Jake',
     last_name : 'Peralta',
     email : 'peralta@gmail.com',
     authority_name : 'dépositaire',
     activated : false
-  },
-  { login : 'caissier',
-    password_hash : '',
-    first_name : 'Gina',
-    last_name : 'Manelli',
-    email : 'manelli@gmail.com',
-    authority_name : 'caissier',
-    activated : false
-  },
-  { login : 'agent',
-    password_hash : '',
-    first_name : 'Rosa',
-    last_name : 'Diaz',
-    email : 'diaz@gmail.com',
-    authority_name : 'agent de recouvrement',
-    activated : true
   },
 
 ];

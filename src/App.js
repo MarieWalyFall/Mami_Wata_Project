@@ -20,20 +20,20 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/history/:whichPage/:allOpen" element={<History />} />
-        <Route path="/listMedication" element={<ListMedication />} />
-        <Route path="/conditioning" element={<Conditioning />} />
-        <Route path="/mutual" element={<Mutual />} />
-        <Route path="/service" element={<Service />} />
-        <Route path="/ticketSale" element={<BuyTicket />} />
-        <Route path="/medicationSale" element={<BuyMedication />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/patient" element={<Patient />} />
-        <Route path="/user" element={<User />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/inventory" element={<Inventory />} />
-        <Route path="/account" element={<Account />} />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/history/:userId" element={<History />} />
+        <Route path="/listMedication/:userId" element={<ListMedication />} />
+        <Route path="/conditioning/:userId" element={<Conditioning />} />
+        <Route path="/mutual/:userId" element={<Mutual />} />
+        <Route path="/service/:userId" element={<Service />} />
+        <Route path="/ticketSale/:userId" element={<BuyTicket />} />
+        <Route path="/medicationSale/:userId" element={<BuyMedication />} />
+        <Route path="/dashboard/:userId" element={<Dashboard />} />
+        <Route path="/patient/:userId" element={<Patient />} />
+        <Route path="/user/:userId" element={<User />} />
+        <Route path="/dashboard/:userId" element={<Dashboard />} />
+        <Route path="/inventory/:userId" element={<Inventory />} />
+        <Route path="/account/:userId" element={<Account />} />
       </Routes>
     </Router>  
   );
