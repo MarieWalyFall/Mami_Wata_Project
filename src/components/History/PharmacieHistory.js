@@ -1,11 +1,18 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+
 import ActivatedComponent from '../CRUD/ActivatedComponent';
-import { MedicationTransactionData } from '../Data/Data';
+import { MedicationTransactionData, UserData } from '../Data/Data';
 
 
 const PharmacieHistory = () => {
 
+  const { userId } = useParams();
+  const user = UserData.find((user) => user.id === userId);
+
   const [menuTransactionOpen, setMenuTransactionOpen] = useState({});
+
+
 
 
   const toggleMenuTransaction = (index) => {
@@ -51,7 +58,7 @@ const PharmacieHistory = () => {
             <td className="pt-4 px-2">Montant encaissé</td>
             <td className="pt-4 px-2">Prise en charge</td>
             <td className="pt-4 px-2">Statut</td>
-            <td></td>
+
           </tr>
         </thead>
         <tbody>
@@ -93,6 +100,9 @@ const PharmacieHistory = () => {
                 }
               })()}
             </td> 
+            <td rowSpan={2} className={`pt-4 mx-2 pb-4 ${!menuTransactionOpen[index] ? 'hidden' : ''}`} >
+              <button className={`p-2 rounded-lg bg-green-700 text-white font-semibold ${medicationTransaction.status == 'CANCELLED' ? 'hidden' : ''}`} onClick={() => handleActivatedClick(medicationTransaction)}>Voir l'ordonnance</button>
+            </td>
             <td className={`text-xs ${menuTransactionOpen[index] ? 'hidden' : ''}`}> {medicationTransaction.date} </td>
           
         </tr>
@@ -103,7 +113,7 @@ const PharmacieHistory = () => {
           <td className="pt-4 px-2">Caissier</td>          
           <td className="pt-4 px-2">Mutuelle</td>
           <td rowSpan={2} className="pt-4 mx-2 pb-4">
-            <button className={`p-2 rounded-lg bg-red-700 text-white font-semibold ${medicationTransaction.status == 'CANCELLED' ? 'hidden' : ''}`} onClick={() => handleActivatedClick(medicationTransaction)}>Annuler</button>
+            <button className={`p-2 rounded-lg bg-red-500 text-white font-semibold ${user.authority_name === 'depositaire' ? 'hidden' : ''} ${user.authority_name === 'caissier' ? 'hidden' : ''} ${medicationTransaction.status == 'CANCELLED' ? 'hidden' : ''}`} onClick={() => handleActivatedClick(medicationTransaction)}>Annuler</button>
           </td>
         </tr>
         <tr className={`w-full ${menuTransactionOpen[index] ? '' : 'hidden'}`}>

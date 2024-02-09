@@ -102,7 +102,7 @@ const ListMedication = () => {
                             <th className="py-4 px-7">Designation</th>
                             <th className="py-4 px-7">Prix XOF</th>
                             <th className="py-4 px-7">Quantité</th>
-                            <th className="py-4 px-7">Stock</th>
+                            <th className="py-4 px-7">CMM</th>
                             <th className="py-4 px-7">Satut</th>
                             <th className="py-4 px-7">Action</th>
                         </tr>

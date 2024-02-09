@@ -22,7 +22,7 @@ const BuyMedication = () => {
       console.log(userId);
       return <div>Utilisateur non trouvé</div>;
   }
-  if(user.authority_name != 'dépositaire'){
+  if(user.authority_name !== 'dépositaire'){
     return <div>Utilisateur non autorisé</div>;
   }
 
@@ -46,6 +46,21 @@ const BuyMedication = () => {
           <AddMedication/>
         </div>
         <div className="border-dashed border-x border-gray-300 w-1/3 px-8">
+        <div className="mb-4">
+            <label className="block text-gray-700 text-sm font-bold mb-2 mt-6 raleway" htmlFor="service">
+              Service d'origine de l'ordonnance
+            </label>
+            <select
+              className="shadow appearance-none border rounded-lg w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline lato"
+              name="service"
+              id="service"
+            >
+              <option value="">Sélectionnez un service</option>
+              <option value="type1">Type 1</option>
+              <option value="type2">Type 2</option>
+              {/* ... autres options de type de mutuelle */}
+            </select>
+          </div>
           <Patientform onFormFilled={handleFormFilled} />
         </div>
         <div className="w-1/3 h-full px-8 py-10 flex flex-col justify-center">

@@ -95,8 +95,8 @@ function VerifiedHistory() {
       </ul>
 
       <div id="myTabContent">
-        {activeTab === 'pharmacie' && <PharmacieHistory />}
-        {activeTab === 'consultation' && <ConsultationHistory />}
+        {activeTab === 'pharmacie' && <PharmacieHistory userId={userId}/>}
+        {activeTab === 'consultation' && <ConsultationHistory userId={userId}/>}
       </div>
     </div>
   );

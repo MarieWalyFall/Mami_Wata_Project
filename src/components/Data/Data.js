@@ -194,18 +194,30 @@ const ServiceData = [
   },  
 ];
 
+
 const CategoryData = [
   { name : 'Consultation',
+    activated : true
+  },  
+  { name : 'Analyses',
+    activated : true
+  },  
+  { name : 'Visite',
+    activated : false
+  },  
+];
+const ServiceCategoryData = [
+  { category : 'Consultation',
     service : 'Pédiatrie',
     price : 2000,
     activated : true
   },  
-  { name : 'Analyses',
+  { category : 'Analyses',
     service : 'Laboratoire',
     price : 5000,
     activated : true
   },  
-  { name : 'Visite',
+  { category : 'Visite',
     service : 'Maternité',
     price : 3000,
     activated : false
@@ -246,7 +258,7 @@ const MutualData = [
 ];
 
 const NatureMutualData = [
-  { name : 'Cesam',
+  { category : 'Cesam',
     activated : true
   },
   { name : 'Maladie universells',
@@ -359,4 +371,4 @@ const UserData = [
 
 
 // Exportez les données
-export { conditioningData, MedicationTransactionData, TicketTransactionData, MedicationData, ServiceData, CategoryData, MutualData, NatureMutualData, PatientData, UserData};
+export { conditioningData, MedicationTransactionData, TicketTransactionData, MedicationData, ServiceData, CategoryData, MutualData, NatureMutualData, PatientData, UserData, ServiceCategoryData};

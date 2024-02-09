@@ -176,7 +176,7 @@ const PatientForm = ({ onFormFilled }) => {
                 placeholder='Mutuelle'
               />
             </div>
-            <div className="mb-4">
+            {/* <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2 raleway" htmlFor="carnet">
                 Carnet
               </label>
@@ -189,7 +189,7 @@ const PatientForm = ({ onFormFilled }) => {
                 onChange={handleInputChange}
                 placeholder='Carnet'
               />
-            </div>
+            </div> */}
           </div>
         )}
       </form>
